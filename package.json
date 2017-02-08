@@ -1,6 +1,11 @@
 {
     "name": "mocha_ex",
     "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dragan-fintech/mocha_ex.git"
+    },
+    "author": "Dragan Nikolic <dragan@fintechdev.net>",
     "scripts": {
         "test": "mocha"
     }
