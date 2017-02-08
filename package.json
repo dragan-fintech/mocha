@@ -1,0 +1,7 @@
+{
+    "name": "mocha_ex",
+    "version": "1.0.0",
+    "scripts": {
+        "test": "mocha"
+    }
+}
