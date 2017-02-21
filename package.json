@@ -7,6 +7,6 @@
     },
     "author": "Dragan Nikolic <dragan@fintechdev.net>",
     "scripts": {
-        "test": "mocha"
+        "test": "mocha $@"
     }
 }
