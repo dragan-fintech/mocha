@@ -1,8 +1,8 @@
-// to run all tests that have tag >tag>: 
+// to run all tests that have tag <tag>: 
 // $ ./node_modules/mocha/bin/mocha --grep <tag> 02_tagging/test.js
 // where tag = @dev or @qa
 //
-// to run tests that do NOT have tag >tag>: 
+// to run tests that do NOT have tag <tag>: 
 // $ ./node_modules/mocha/bin/mocha --grep <tag> --invert 02_tagging/test.js
 // where tag = @dev or @qa
 
