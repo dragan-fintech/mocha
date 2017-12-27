@@ -1,18 +1,17 @@
 // Loading modules
-var express = require('express');  
-var lowdb = require('lowdb');  
-var storage = require('lowdb/file-sync');  
-var uuid = require('uuid');  
-var bodyParser = require('body-parser');  
+const express = require('express');  
+const lowdb = require('lowdb');  
+const FileSync = require('lowdb/adapters/FileSync')
+const uuid = require('uuid');  
+const bodyParser = require('body-parser');  
 
 // Instantiating express module
 var app = express();  
 
 // Instantiating database module
 // This will create db.json storage in the root folder
-app.db = lowdb('db.json', {  
-    storage: storage
-});
+const adapter = new FileSync('db.json')
+app.db = lowdb(adapter)
 
 // Adding body-parser middleware to parser JSON data
 app.use(bodyParser.json());  
@@ -21,7 +20,7 @@ app.use(bodyParser.json());
 
 // Listing all tasks
 app.get('/tasks', function(req, res) {  
-    return res.json(app.db('tasks'));
+    return res.json(app.db.get('tasks'));
 });
 
 // Finding a task
@@ -45,7 +44,7 @@ app.post('/tasks', function(req, res) {
 });
 
 // Updating a task
-app.put('/tasks/:id', function(req, res) {  
+app.put('/tasks/:id', function(req, res) {
     var id = req.params.id;
     var task = req.body;
     app.db('tasks')
@@ -59,7 +58,7 @@ app.put('/tasks/:id', function(req, res) {
 });
 
 // Delete a task
-app.delete('/tasks/:id', function(req, res) {  
+app.delete('/tasks/:id', function(req, res) {
     var id = req.params.id;
     app.db('tasks').remove({
         id: id
